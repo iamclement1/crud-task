@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function TaskForm(props) {
     
     const [ input, setInput ] = useState('');
+
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus()
+    })
 
     const handleChange = e => {
         setInput(e.target.value)
@@ -21,15 +27,17 @@ function TaskForm(props) {
     }
 
     return (
-    <form action="" onSubmit={ handleSubmit }>
+    <form action="" onSubmit={ handleSubmit } className='task-form'>
         <input type="text"
         placeholder='Add a Task'
         value={input}
         name='text'
         onChange={ handleChange }
+        ref={ inputRef }
+        className='task-input'
         />
 
-        <button>Add Task</button>
+        <button className='task-button'>Add Task</button>
     </form>
   )
 }
