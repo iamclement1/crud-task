@@ -44,7 +44,7 @@ function TaskList() {
     }
     
     return (
-    <div className='text-center bg-gray-900 text-white'>
+    <div className=''>
         <h1 className='font-bold text-3xl'>What is the Plan for Today?</h1>
         <TaskForm onSubmit={addTask}/>
         <Task tasks={tasks} completeTask={completeTask} 
