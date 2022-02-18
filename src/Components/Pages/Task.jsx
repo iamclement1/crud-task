@@ -20,7 +20,9 @@ function Task({tasks, completeTask}) {
                 {task.text}
             </div>
             <div className='icon'>
-                <RiCloseCircleLine />
+                <RiCloseCircleLine 
+                onClick={() => removeTask(task.id)}
+                className='delete-icon'/>
                 <TiEdit />
             </div>
         </div>
