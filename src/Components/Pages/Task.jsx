@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { TiEdit } from 'react-icons/ti'
 
-function Task({tasks, completeTask}) {
+function Task({tasks, completeTask, removeTask}) {
 
     const [ edit, setEdit ] = useState({
         id: null,
@@ -23,7 +23,10 @@ function Task({tasks, completeTask}) {
                 <RiCloseCircleLine 
                 onClick={() => removeTask(task.id)}
                 className='delete-icon'/>
-                <TiEdit />
+                <TiEdit 
+                onClick={() => setEdit({ id: todo.id, value: todo.text})}
+                className='edit-icon'
+                />
             </div>
         </div>
     ))

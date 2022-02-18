@@ -16,6 +16,9 @@ function TaskList() {
         setTasks(newTasks);
     }
 
+
+
+    // this function adds a task to the task list
     const completeTask = id => {
         let updatedTasks = tasks.map(task => {
             if(task.id === id) {
