@@ -8,14 +8,28 @@ function TaskList() {
 
     const addTask = task =>{
         if(!task.text || /^\s*$/.test(task.text )) {
-            return
+            return;
         }
 
         const newTasks = [task, ...tasks]
-
         setTasks(newTasks);
+    };
+
+    const updateTask = (taskId, newValue) => {
+        if(!newValue.text || /^\s*$/.test(newValue.text )) {
+            return;
+        }
+
+        setTasks (prev => prev.map(item => (item.id === taskId ? newValue : item))
+        
+        )
     }
 
+    const removeTask = id => {
+        const removeArr = [...tasks].filter(task => task.id !== id)
+
+        setTasks(removeArr);
+    };
 
 
     // this function adds a task to the task list
@@ -33,7 +47,10 @@ function TaskList() {
     <div className=''>
         <h1 className='font-bold text-3xl'>What is the Plan for Today?</h1>
         <TaskForm onSubmit={addTask}/>
-        <Task tasks={tasks} completeTask={completeTask}/>
+        <Task tasks={tasks} completeTask={completeTask} 
+        removeTask = { removeTask }
+        updateTask = { updateTask }
+        />
     </div>
   )
 }
